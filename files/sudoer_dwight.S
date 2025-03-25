@@ -1,0 +1,1 @@
+dwight.S  ALL=(ALL) NOPASSWD: ALL

@@ -1,0 +1,22 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Create dwight.S user
+      user:
+        name: dwight.S
+        groups: root
+
+    - name: Copy SSH key for dwight.S user
+      authorized_key:
+        user: dwight.S
+        key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTiqWsf5BDbm+dJ4YsRpuQzFGJ7Ux73Zavbto0C6rI+kurhd2wGbhMc8rdOFyTg0Ypxy3t7shx//kkaAuFWsqdUmqBH0ebnmgC5NK3EEM3hsQIVtKjfGM4vlZ+ILs/HUNSxQTVQqCQXRZ7HVq+11Bt2/Vl87dbWLuL3WvraPbNXMsJZVo6CurtuyDLrcEoLY+naQmnyNNnEVzSblaWhns408lMlUA1TrWxBsJ0qwgqpV4s0CNtj1VVMyu0dEycAuwR+H02yYEH1K+tSvH/h4pKrRXCBVrk3MrI8/OhMh9g26Jxn1Pfa3879+P/xV9Jn+jtwtbp2+WW51uu94VZR0I+ymYREuH"
+    - name: Copy sudoers file for dwight.S
+      copy:
+        src: sudoer_dwight.S
+        dest: /etc/sudoers.d/dwight.S
+        owner: root
+        group: root
+        mode: '0440'
+
